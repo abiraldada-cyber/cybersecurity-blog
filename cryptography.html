@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introduction to cryptography. Explore hash functions (SHA-256), symmetric vs asymmetric encryption (AES, RSA), and Public Key Infrastructure (PKI).">
+    <title>Cryptography | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item active"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item"><a href="linux.html">Linux</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">CRYPTOGRAPHIC PRINCIPLES</span>
+            <h1 class="hero-title">Cryptographic <span>Science</span></h1>
+            <p class="hero-desc">The mathematics of securing data integrity and confidentiality.</p>
+        </div>
+    </section>
+
+    <!-- Basic Section -->
+    <section id="basic" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">1. Basic: Hashing and Data Integrity</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                Before encrypting files, we must learn how to verify that they haven't been tampered with. This is done using **hash functions**. A hash function is a one-way mathematical formula that takes any input (like a word or a large file) and converts it into a fixed-length string of characters.
+            </p>
+            <div class="grid grid-2" style="align-items: center; gap: 3rem; margin-bottom: 1.5rem;">
+                <div>
+                    <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                        A secure hash has three critical properties:
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <li><strong>One-Way:</strong> You can easily generate a hash from a file, but you cannot reverse the hash back into the original file.</li>
+                        <li><strong>Deterministic:</strong> The same input will always produce the exact same hash.</li>
+                        <li><strong>Collision Resistant:</strong> It is practically impossible to find two different inputs that produce the same output hash.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-title">Hash Checksum Sandbox</div>
+                        </div>
+                        <div class="terminal-body" style="font-size: 0.8rem; line-height: 1.4;">
+                            <p style="margin-bottom: 0.5rem;"><span class="accent-text-cyan">Input:</span> <code>abiral</code></p>
+                            
+                            <p style="margin-top: 0.75rem;" class="accent-text-green">MD5 (128-bit, Legacy/Vulnerable to collisions)</p>
+                            <pre style="margin: 0.25rem 0; padding: 0.5rem; font-size: 0.75rem;"><code>8c3cd9d1ef4b81b8fa8a203922f5c71a</code></pre>
+                            
+                            <p style="margin-top: 0.75rem;" class="accent-text-green">SHA-256 (256-bit, Secure Modern Standard)</p>
+                            <pre style="margin: 0.25rem 0; padding: 0.5rem; font-size: 0.75rem; white-space: pre-wrap; word-break: break-all;"><code>0e75688a4ea8397a61d157df4a569ad10237d7a7b8e1f5799986b6a213e8e2aa</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Section -->
+    <section id="practical">
+        <div class="container">
+            <h2 class="section-title">2. Practical: Symmetric vs. Asymmetric Encryption</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                To keep data private, we encrypt it. There are two main ways to configure encryption keys: symmetric (shared keys) and asymmetric (public-private keypairs).
+            </p>
+
+            <div class="grid grid-2">
+                <!-- Symmetric -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">Symmetric (Shared Key)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Symmetric encryption uses **one key** to both encrypt and decrypt files. It is extremely fast and suited for encrypting bulk data (like local hard drives or database files).
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem;">
+                        <li><strong>Algorithms:</strong> AES-256, ChaCha20</li>
+                        <li><strong>Analogy:</strong> A lockbox where the same physical key locks and unlocks the box.</li>
+                        <li><strong>The Flaw:</strong> If you need to send files to a friend, you must somehow share the key first. If an attacker intercepts the key, they can decrypt all your messages.</li>
+                    </ul>
+                </div>
+
+                <!-- Asymmetric -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">Asymmetric (Keypair)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Asymmetric encryption solves the key sharing issue using a mathematically linked **keypair**: a Public Key (anyone can see) and a Private Key (kept secret).
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem;">
+                        <li><strong>Algorithms:</strong> RSA, ECC (Elliptic Curve Cryptography)</li>
+                        <li><strong>Analogy:</strong> A mailbox where anyone can drop mail through the slot (Public Key), but only the owner can unlock the box to read it (Private Key).</li>
+                        <li><strong>How it is used:</strong> You encrypt the data with the recipient's public key. Only their private key can decrypt it.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Section -->
+    <section id="advanced" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">3. Advanced: Public Key Infrastructure (PKI) & Digital Signatures</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                In a global network like the internet, how do you verify that a public key actually belongs to the person or site you think it does? We use **PKI**.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+                PKI is a network of trust that binds cryptographic keys to user identities using digital certificates and trust authorities.
+            </p>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">Certificate Authorities</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        CAs are trusted organizations (like Let's Encrypt or DigiCert) that verify domains and sign digital certificates, confirming that a public key belongs to the domain (e.g., <code>bank.com</code>).
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">Digital Signatures</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        Provides non-repudiation. A sender hashes a file and encrypts the hash with their <strong>Private Key</strong>. The receiver decrypts it with the sender's <strong>Public Key</strong>. If the hashes match, the sender's identity is verified.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">SSL/TLS Certificates</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        Browser trust stores contain the public keys of root CAs. When you visit an HTTPS site, the browser checks the site's certificate signature against these root keys to verify the connection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

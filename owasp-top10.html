@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understand the OWASP Top 10 vulnerabilities. Learn how normal users interact, how attackers exploit, and see clear examples of each security flaw.">
+    <title>OWASP Top 10 | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item active"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item"><a href="linux.html">Linux</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">VULNERABILITY RESEARCH</span>
+            <h1 class="hero-title">Understanding <span>OWASP Top 10</span></h1>
+            <p class="hero-desc">The industry standard awareness document for web application vulnerabilities.</p>
+        </div>
+    </section>
+
+    <!-- Safety Disclaimer -->
+    <div class="container">
+        <div class="disclaimer-banner">
+            <div class="disclaimer-icon">⚠️</div>
+            <div class="disclaimer-content">
+                <h4>EDUCATIONAL LAB ENVIRONMENT ONLY</h4>
+                <p>
+                    All vulnerability analysis, payloads, and scenarios detailed on this page are presented strictly for educational purposes and authorized research within academic sandboxes. Do not execute these payloads against systems you do not own or lack written permission to audit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basic Overview Section -->
+    <section id="basic-overview" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">1. Basic: What is the OWASP Top 10?</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                If you are just getting started with web security, you will hear the term **OWASP** (Open Web Application Security Project) everywhere. Every few years, OWASP releases a list of the ten most critical security risks facing web applications.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7;">
+                This list is not just a theoretical catalog—it is compiled from analyzing thousands of real-world security reviews and data breaches. It serves as a guide for developers to avoid building security flaws into their code and helps security analysts audit applications systematically.
+            </p>
+        </div>
+    </section>
+
+    <!-- Practical Breakdown Section -->
+    <section id="practical-breakdown">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">2. Practical: User vs. Attacker Analysis</h2>
+                <p class="section-subtitle">How normal interactions contrast with malicious exploits across all ten risk areas</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 3rem;">
+                
+                <!-- A01 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A01:2021 - Broken Access Control</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Restrictions on what authenticated users are allowed to do are not properly enforced. Users can access other accounts or execute administrator functions.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Views their own account dashboard at <code>https://site.com/profile?id=102</code>.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Changes the ID parameter to view profiles belonging to other users.</li>
+                        <li><strong>Practical Example:</strong> Accessing <code>https://site.com/profile?id=103</code> or loading an administrative path directly without a session: <code>https://site.com/admin/delete-user</code>.</li>
+                        <li><strong>Prevention:</strong> Implement strict, server-side access controls (RBAC) and validate session permissions for every request.</li>
+                    </ul>
+                </div>
+
+                <!-- A02 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A02:2021 - Cryptographic Failures</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Weak or absent encryption of data in transit or at rest. This allows sensitive information (passwords, bank data, keys) to be intercepted or decoded.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Submits their credit card data, expecting it to be fully encrypted and hidden.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Sniffs unencrypted HTTP traffic or extracts weakly hashed passwords from a database breach.</li>
+                        <li><strong>Practical Example:</strong> Sending data over <code>http://site.com</code> in plaintext, or using deprecated MD5 hashing for database password storage: <code>MD5("abiral") = 8c3cd9d1ef4b81b8fa8a203922f5c71a</code>.</li>
+                        <li><strong>Prevention:</strong> Force HTTPS everywhere with TLS 1.3, disable deprecated cipher algorithms, and use strong hashing algorithms like Argon2 or bcrypt.</li>
+                    </ul>
+                </div>
+
+                <!-- A03 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A03:2021 - Injection (SQLi, XSS, Command Injection)</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> User input is accepted and passed directly to an interpreter (like SQL or bash) without validation, allowing the input to execute as code.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Enters their login name <code>abiral</code> into the login username field.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Enters malicious syntax to alter the structure of the database query.</li>
+                        <li><strong>Practical Example:</strong> Submitting <code>' OR '1'='1</code> in a login form to bypass the password check, or inserting a script payload like <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> in a message board.</li>
+                        <li><strong>Prevention:</strong> Use parameterized queries (prepared statements), enforce input whitelisting, and perform context-aware output encoding.</li>
+                    </ul>
+                </div>
+
+                <!-- A04 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A04:2021 - Insecure Design</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Flaws in the application's logic and business flow, rather than implementation errors. The code might be written correctly, but the feature's design is insecure.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Recovers their account using security questions (e.g. "Which city were you born in?").</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Researches public records or social media posts to answer the questions and reset the target's password.</li>
+                        <li><strong>Practical Example:</strong> A password recovery flow that trusts a user's answer to "What is your pet's name?" without enforcing multi-factor verification (MFA).</li>
+                        <li><strong>Prevention:</strong> Integrate threat modeling into the early stages of software development, and avoid using weak logic like security questions for verification.</li>
+                    </ul>
+                </div>
+
+                <!-- A05 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A05:2021 - Security Misconfiguration</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Servers or application frameworks configured incorrectly, such as leaving default accounts active, exposing system error logs, or keeping unnecessary ports open.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Accesses the normal application interface.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Accesses unhardened administration portals using default passwords or checks error messages for server paths.</li>
+                        <li><strong>Practical Example:</strong> Accessing a router panel or administrative portal and logging in using <code>admin</code> / <code>admin</code>.</li>
+                        <li><strong>Prevention:</strong> Change all default credentials, disable directory listing, and turn off detailed system error stack traces on production servers.</li>
+                    </ul>
+                </div>
+
+                <!-- A06 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A06:2021 - Vulnerable and Outdated Components</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> The website uses external libraries, plug-ins, or frameworks that contain known security bugs and have not been patched.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Uses website components that depend on open-source packages (like a PDF generator or log processor).</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Identifies out-of-date service versions and uses public exploit code to execute commands.</li>
+                        <li><strong>Practical Example:</strong> Exploiiting unpatched systems using known vulnerabilities like Log4j (CVE-2021-44228) by injecting a payload string into a header input.</li>
+                        <li><strong>Prevention:</strong> Maintain an updated Software Bill of Materials (SBOM) and run continuous vulnerability scans on dependencies.</li>
+                    </ul>
+                </div>
+
+                <!-- A07 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A07:2021 - Identification and Authentication Failures</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Session cookies or login validation systems that are poorly implemented, allowing attackers to brute-force accounts or hijack sessions.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Logins to their account with their password.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Automates thousands of login attempts using list databases of common passwords, exploiting the lack of rate limits.</li>
+                        <li><strong>Practical Example:</strong> Sending 10,000 post requests to <code>/login</code> testing common passwords (e.g. <code>password123</code>, <code>123456</code>) without the system locking the account.</li>
+                        <li><strong>Prevention:</strong> Enforce multi-factor authentication (MFA), implement rate-limiting, and enforce complex password policies.</li>
+                    </ul>
+                </div>
+
+                <!-- A08 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A08:2021 - Software and Data Integrity Failures</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> Code updates or serialized data structures are trusted and processed by the system without verifying their integrity and authenticity.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Automatically receives software patches or logs in using cookie state objects.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> tampers with serialized objects in cookies to gain administrator privileges.</li>
+                        <li><strong>Practical Example:</strong> Manipulating a base64 encoded user session cookie containing <code>{"user":"abiral","role":"user"}</code> and changing it to read <code>{"user":"abiral","role":"admin"}</code>.</li>
+                        <li><strong>Prevention:</strong> Sign and hash all software updates, and never trust serialized inputs from user cookies or requests without validation keys.</li>
+                    </ul>
+                </div>
+
+                <!-- A09 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A09:2021 - Security Logging and Monitoring Failures</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> The system does not log security-critical events (like failed logins or unauthorized access attempts), allowing attackers to operate undetected.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Interacts with the web application normally.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Performs unauthorized scans or brute-force tests over days, knowing the system doesn't generate alerts.</li>
+                        <li><strong>Practical Example:</strong> Attacking a website and generating 5,000 server errors, but checking the administration panel to find that no logs or security alerts were recorded.</li>
+                        <li><strong>Prevention:</strong> Ensure all login failures and server errors are logged securely and monitored in real-time by a SIEM system.</li>
+                    </ul>
+                </div>
+
+                <!-- A10 -->
+                <div class="card">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.75rem;">A10:2021 - Server-Side Request Forgery (SSRF)</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                        <strong>Explanation:</strong> A web server takes a user-supplied URL parameter and fetches it without validation, allowing the server to query internal services or local resources.
+                    </p>
+                    <ul style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; list-style-position: inside; display: flex; flex-direction: column; gap: 0.25rem;">
+                        <li><strong class="accent-text-green">How User Uses:</strong> Inputs an image URL to update their profile picture: <code>https://site.com/fetch?url=https://avatar.com/me.jpg</code>.</li>
+                        <li><strong style="color: var(--accent-red);">How Attacker Uses:</strong> Changes the target URL to point to internal services or local loops.</li>
+                        <li><strong>Practical Example:</strong> Querying the server's local interfaces: <code>https://site.com/fetch?url=http://127.0.0.1:8080/admin</code> or fetching cloud metadata: <code>http://169.254.169.254/latest/meta-data/</code>.</li>
+                        <li><strong>Prevention:</strong> Disable redirects, implement URL input whitelists, and block the server from contacting internal network addresses directly.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Progression Section -->
+    <section id="advanced" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">3. Advanced: Secure Development Lifecycle</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                To defend against the OWASP Top 10 systematically, organizations must implement a <strong>Secure Software Development Lifecycle (SSDLC)</strong>.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+                Instead of checking for security vulnerabilities only before deployment, security checks must be integrated into every step of the development process:
+            </p>
+            <div class="grid grid-3">
+                <div class="card" style="padding: 1.5rem;">
+                    <h4 class="accent-text-cyan" style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Threat Modeling</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Analyze design choices early in the planning phase to find logical and business-flow security flaws before any code is written.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;">
+                    <h4 class="accent-text-cyan" style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Static Code Audits (SAST)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Automate source code scans during code commits to locate vulnerable coding patterns before compilation.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;">
+                    <h4 class="accent-text-cyan" style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Dynamic Testing (DAST)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Run automated vulnerability scans on the compiled, running application to simulate attacker interactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

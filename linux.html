@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Linux operating system internals, filesystem hierarchy, file permissions, octal values, process tracking, and SUID auditing.">
+    <title>Linux Systems | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item active"><a href="linux.html">Linux</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">SYSTEMS AUDITING</span>
+            <h1 class="hero-title">Linux <span>System Architecture</span></h1>
+            <p class="hero-desc">Understanding filesystem hierarchies, user permissions, and process management</p>
+        </div>
+    </section>
+
+    <!-- Basic Section -->
+    <section id="basic" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">1. Basic: Filesystem and Directory Hierarchy</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                In Windows, files are stored on separate drives (C:\, D:\). Linux takes a different approach: **everything is a file**, organized under a single root directory represented by a forward slash (<code>/</code>).
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+                When auditing a Linux system, security analysts look at specific directories to verify configurations or audit logs:
+            </p>
+
+            <div class="grid grid-3">
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.5rem;">/etc</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Contains all system configuration files. Auditing files like <code>/etc/passwd</code> (list of users) is a common security step.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.5rem;">/var/log</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Stores system, authentication, and service logs (like Apache or Nginx logs) used to detect suspicious access.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.5rem;">/tmp</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">A temporary directory that any user can write to. Attackers often download and run scripts here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Section -->
+    <section id="practical">
+        <div class="container">
+            <h2 class="section-title">2. Practical: User Permissions and Octal Values</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                Linux is a multi-user operating system. Access is managed through strict permissions divided into three groups: **Owner** (User), **Group**, and **Others** (everyone else).
+            </p>
+
+            <div class="grid grid-2" style="align-items: center; gap: 4rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">Decoding Permissions</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                        Permissions are represented symbolically by three flags: <code>Read (r)</code>, <code>Write (w)</code>, and <code>Execute (x)</code>. 
+                    </p>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                        We assign numeric values to these flags to change permissions using the <code>chmod</code> command:
+                        <br>
+                        <strong>r = 4</strong> | <strong>w = 2</strong> | <strong>x = 1</strong> | <strong>- = 0</strong>
+                    </p>
+                    <div style="background: rgba(0, 0, 0, 0.2); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-glow); display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem;">
+                        <div><code class="accent-text-green">chmod 755 script.sh</code> - Owner has full access (7). Group and Others can read and run it (5), but cannot edit it.</div>
+                        <div><code class="accent-text-green">chmod 600 id_rsa</code> - Owner can read and edit (6) their SSH private key. Everyone else is fully blocked (000).</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-title">Permissions breakdown - ls -l output</div>
+                        </div>
+                        <div class="terminal-body" style="font-size: 0.8rem; line-height: 1.5;">
+                            <p style="color: var(--accent-green);">-rwxr-xr-x 1 abiral users 420 Jun 14 06:30 script.sh</p>
+                            <p style="color: var(--accent-cyan); font-weight: bold; margin-top: 0.75rem;">Flag Breakdown:</p>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.25rem; padding-left: 0.5rem;">
+                                <li><code>-</code> : Standard file indicator</li>
+                                <li><code>rwx</code> : Owner permissions (4 + 2 + 1 = <strong style="color: #ffffff;">7</strong>)</li>
+                                <li><code>r-x</code> : Group permissions (4 + 0 + 1 = <strong style="color: #ffffff;">5</strong>)</li>
+                                <li><code>r-x</code> : Others permissions (4 + 0 + 1 = <strong style="color: #ffffff;">5</strong>)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Section -->
+    <section id="advanced" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">3. Advanced: Process Hierarchy & SUID Auditing</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                Mastering system administration requires understanding how processes run and identifying privilege risks.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+                By monitoring active processes and auditing permission states, we prevent privilege escalation.
+            </p>
+
+            <div class="grid grid-2">
+                <!-- Processes -->
+                <div class="card">
+                    <h3 class="card-title" style="color: var(--accent-cyan);">Process Trees & Sockets</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                        Every program running on Linux starts as a child process of a parent process. 
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Using command filters like <code>ps aux --forest</code>, analysts trace parent-child process connections to find hidden backdoor shells. We also audit system ports using <code>ss -tulpn</code> to see which processes are opening active network sockets.
+                    </p>
+                </div>
+
+                <!-- SUID -->
+                <div class="card">
+                    <h3 class="card-title" style="color: var(--accent-cyan);">SUID Privilege Risks</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                        The SUID (Set Owner User ID) is a special permission bit assigned to files. 
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        When a file has the SUID bit set, it runs with the privileges of the file's owner (often root) rather than the user running it. If a SUID binary is misconfigured, attackers can exploit it to escalate their permissions to root.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

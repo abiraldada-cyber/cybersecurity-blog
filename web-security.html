@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore web application vulnerabilities: SQL Injection and Cross-Site Scripting (XSS). Learn about Burp Suite intercepting proxies, secure coding, and WAF defense.">
+    <title>Web Security | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item active"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item"><a href="linux.html">Linux</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">WEB SECURITY LABORATORY</span>
+            <h1 class="hero-title">Web Application <span>Security</span></h1>
+            <p class="hero-desc">How vulnerabilities are intercepted, tested, and resolved.</p>
+        </div>
+    </section>
+
+    <!-- Safety Disclaimer -->
+    <div class="container">
+        <div class="disclaimer-banner">
+            <div class="disclaimer-icon">⚠️</div>
+            <div class="disclaimer-content">
+                <h4>EDUCATIONAL LAB ENVIRONMENT ONLY</h4>
+                <p>
+                    All payloads, code samples, and interception examples on this page are provided strictly for authorized educational research in laboratory environments. Never attempt to intercept or manipulate traffic for systems you do not own or have explicit authorization to test.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basic Section -->
+    <section id="basic" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">1. Basic: How Web Applications Work</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                Websites are built on a simple exchange: you (the client) make a request, and the server provides a response. This communication is handled by **HTTP** (Hypertext Transfer Protocol).
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7;">
+                When you fill out a form or search for a product, your browser packages that input into an HTTP request and sends it off. Security issues arise when the server blindly trusts that input and processes it directly in backend databases or reflects it back to other users without checking it first.
+            </p>
+        </div>
+    </section>
+
+    <!-- Practical Section -->
+    <section id="practical">
+        <div class="container">
+            <h2 class="section-title">2. Practical: Traffic Interception & Exploit Labs</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                To audit web applications, security professionals use an intercepting proxy. **Burp Suite** is the industry-standard tool for this. It sits between your browser and the web server, allowing you to capture, read, and edit HTTP requests before they reach the server.
+            </p>
+
+            <!-- Burp Suite Card -->
+            <div class="card" style="margin-bottom: 3rem;">
+                <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Using Burp Suite to Intercept Traffic</h3>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                    When you click "Submit" on a webpage, the request is sent immediately. With Burp Suite, you configure your browser to route traffic through Burp's local port (usually <code>127.0.0.1:8080</code>). 
+                </p>
+                <div class="grid grid-2" style="gap: 2rem; align-items: center;">
+                    <div>
+                        <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                            Once "Intercept is ON" in Burp, the request freezes in transit. You can inspect headers, modify variables (like user roles or item prices), and send the modified request to the server to test how it reacts.
+                        </p>
+                        <p style="color: var(--text-muted); line-height: 1.6;">
+                            This is how we identify parameter tampering and injection vulnerabilities—by modifying requests directly in transit.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-title">Burp Suite Intercept Tab</div>
+                            </div>
+                            <div class="terminal-body" style="font-size: 0.8rem; line-height: 1.4;">
+                                <p style="color: var(--accent-cyan); font-weight: bold;">[Raw HTTP Intercepted Request]</p>
+                                <p>POST /checkout HTTP/1.1</p>
+                                <p>Host: shop.com</p>
+                                <p>Cookie: SessionID=xyz123</p>
+                                <p style="color: var(--accent-red); font-weight: bold; margin-top: 0.5rem;">product_id=45&amp;quantity=1&amp;price=500</p>
+                                <p style="color: var(--text-dim); margin-top: 0.5rem;">
+                                    * Testing: An auditor might change "price=500" to "price=1" to see if the server processes payments without server-side validation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vulnerability Demos -->
+            <div class="grid grid-2">
+                <!-- SQLi -->
+                <div class="card" style="border-color: var(--border-glow);">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">SQL Injection (SQLi)</h3>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem;">⚠️ Educational Lab Use Only</p>
+                    
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Normal Input:</strong> <br>
+                        Username: <code>abiral</code> | Password: <code>123456</code> <br>
+                        <em>Internal Mechanism:</em> The database runs the query:<br>
+                        <code style="color: var(--accent-green); font-size: 0.8rem; display: block; margin-top: 0.25rem;">SELECT * FROM users WHERE username = 'abiral' AND password = '123456';</code>
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Malicious Input:</strong> <br>
+                        Username: <code>' OR '1'='1</code> | Password: <code>(blank)</code> <br>
+                        <em>Internal Mechanism:</em> The query becomes:<br>
+                        <code style="color: var(--accent-red); font-size: 0.8rem; display: block; margin-top: 0.25rem;">SELECT * FROM users WHERE username = '' OR '1'='1';</code>
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        <strong>Why it works:</strong> The quote finishes the string input early, and the injected logic <code>'1'='1'</code> is always true. The database runs the logic and returns a valid user profile, bypassing the password check completely.
+                    </p>
+                </div>
+
+                <!-- XSS -->
+                <div class="card" style="border-color: var(--border-glow);">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Cross-Site Scripting (XSS)</h3>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem;">⚠️ Educational Lab Use Only</p>
+                    
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Normal Comment:</strong> <br>
+                        Input: <code>Nice blog</code> <br>
+                        <em>Internal Mechanism:</em> The browser renders: <br>
+                        <code style="color: var(--accent-green); font-size: 0.8rem; display: block; margin-top: 0.25rem;">&lt;p&gt;Nice blog&lt;/p&gt;</code>
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Malicious Comment:</strong> <br>
+                        Input: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> <br>
+                        <em>Internal Mechanism:</em> The browser receives: <br>
+                        <code style="color: var(--accent-red); font-size: 0.8rem; display: block; margin-top: 0.25rem;">&lt;p&gt;&lt;script&gt;alert('XSS')&lt;/script&gt;&lt;/p&gt;</code>
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        <strong>Why it works:</strong> Instead of seeing plain text, the browser sees a script tag. It parses it as active code and runs the JavaScript. Attackers exploit this to capture session cookies or redirect users to phishing sites.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Section -->
+    <section id="advanced" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <h2 class="section-title">3. Advanced: Application Hardening</h2>
+            <p style="margin-bottom: 1.25rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                Securing web applications requires multiple layers of defense: from coding standards to perimeter filters.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem;">
+                By adopting modern security architectures, we can mitigate vulnerabilities even if coding mistakes occur.
+            </p>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">Prepared Statements</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        Defeats SQL injection. Parameters are sent to the database separate from the query syntax. The database treats inputs strictly as values, never executing them as SQL logic.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">Output Encoding & CSP</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        Defeats XSS. HTML entity encoding converts special characters (like <code>&lt;</code> to <code>&amp;lt;</code>) so they cannot form executable tags. Content Security Policies (CSP) restrict script execution sources.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-cyan);">Layer 7 WAFs</h3>
+                    <p class="card-desc" style="font-size: 0.9rem; color: var(--text-muted);">
+                        Web Application Firewalls inspect incoming payloads at the application layer, filtering out known injection signatures and blocking malicious requests before they reach the backend application.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore beginner cybersecurity learning resources, recommended platforms (TryHackMe, HackTheBox), books, channels, and a complete study roadmap.">
+    <title>Learning Resources | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item"><a href="linux.html">Linux</a></li>
+                <li class="nav-item active"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">LEARNING ROADMAP</span>
+            <h1 class="hero-title">Learning <span>Resources</span></h1>
+            <p class="hero-desc">Curated Platforms, Reference Material, and a Tailored Beginner Roadmap</p>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section id="platforms" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Hands-On Practice Platforms</h2>
+                <p class="section-subtitle">The best platforms to build practical labs and skills</p>
+            </div>
+
+            <div class="grid grid-3">
+                <!-- TryHackMe -->
+                <div class="card">
+                    <h3 class="card-title" style="color: var(--accent-cyan);">TryHackMe</h3>
+                    <p class="card-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">
+                        TryHackMe is a gamified, browser-based learning platform. It is highly recommended for beginners because it provides structured learning paths (e.g., Pre-Security, Complete Beginner, SOC Level 1) with detailed explanations and virtual attack boxes.
+                    </p>
+                </div>
+
+                <!-- HackTheBox -->
+                <div class="card">
+                    <h3 class="card-title" style="color: var(--accent-cyan);">Hack The Box</h3>
+                    <p class="card-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">
+                        Hack The Box is more advanced, offering live machines to exploit. It is an excellent environment to practice penetration testing, reverse engineering, and active directory audits. Starting with their "Starting Point" path is ideal.
+                    </p>
+                </div>
+
+                <!-- PortSwigger -->
+                <div class="card">
+                    <h3 class="card-title" style="color: var(--accent-cyan);">PortSwigger Web Academy</h3>
+                    <p class="card-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">
+                        Created by the makers of Burp Suite, this academy offers 100% free web vulnerability training. It provides high-quality write-ups and interactive labs covering SQLi, XSS, CSRF, and authentication bypasses.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media & Reference Material -->
+    <section id="media">
+        <div class="container">
+            <div class="grid grid-2" style="gap: 4rem;">
+                <!-- YouTube Channels -->
+                <div>
+                    <h2 class="section-title">YouTube Channels</h2>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        Video guides and tutorials from industry leaders:
+                    </p>
+                    
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.25rem;">
+                        <li>
+                            <strong class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">John Hammond</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">Focuses on CTFs, malware analysis, tool reviews, and active security career discussions. Very beginner-friendly.</span>
+                        </li>
+                        <li>
+                            <strong class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">IppSec</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">Known for step-by-step walkthroughs of Hack The Box machines, demonstrating scripting, payloads, and logical debugging.</span>
+                        </li>
+                        <li>
+                            <strong class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">NetworkChuck</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">High-energy lessons covering CCNA networking, Linux fundamentals, Python scripting, and home lab configurations.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Books & References -->
+                <div>
+                    <h2 class="section-title">Recommended Books</h2>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        Classic books to build a deep theoretical foundation:
+                    </p>
+
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.25rem;">
+                        <li>
+                            <strong class="accent-text-green" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">"The Web Application Hacker's Handbook"</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">By Dafydd Stuttard and Marcus Pinto. The gold standard for understanding how web application security mechanisms work and fail.</span>
+                        </li>
+                        <li>
+                            <strong class="accent-text-green" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">"Linux Command Line and Shell Scripting Bible"</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">By Richard Blum and Christine Bresnahan. Essential resource for mastering the Linux command line interface and automation scripting.</span>
+                        </li>
+                        <li>
+                            <strong class="accent-text-green" style="font-family: var(--font-heading); font-size: 1.1rem; display: block;">"PTFM: Penetration Testing Field Manual"</strong>
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">By Alan Calder. A quick, command-only reference booklet covering network queries, reverse shell configurations, and scripting syntax.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Roadmap Section -->
+    <section id="roadmap" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Cybersecurity Beginner Roadmap</h2>
+                <p class="section-subtitle">A step-by-step path from base IT literacy to security certifications</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <!-- Step 1 -->
+                <div class="roadmap-step">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.25rem;">Phase 1: IT Fundamentals (Networking & Linux)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        You cannot secure what you do not understand. Learn how computer networks route data, what the OSI layer model represents, and get comfortable with the Linux terminal. Learn file operations, permissions, and service management.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="roadmap-step">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.25rem;">Phase 2: Basic Programming & Scripting</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Learn Python and Bash scripting. Knowing how to write basic loops and request libraries allows you to automate port scans, parse long system logs, and modify exploit scripts.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="roadmap-step">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.25rem;">Phase 3: Web Vulnerabilities & Cryptography</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Study the OWASP Top 10 vulnerabilities. Set up local containers or use PortSwigger Academy to test SQLi, XSS, and CSRF. Study cryptographic concepts (symmetric vs. asymmetric encryption, hashes, digital signatures).
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="roadmap-step">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.25rem;">Phase 4: Simulated Lab Testing & CTFs</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Register on TryHackMe or HackTheBox. Practice attacking and defending host configurations in lab environments. Research targets, identify open ports with Nmap, find vulnerable software versions, and perform auditing.
+                    </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="roadmap-step">
+                    <h3 class="accent-text-cyan" style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.25rem;">Phase 5: Industry Certifications</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Study for and complete industry-recognized entry-level certifications to validate your skills. Target <strong>eJPT</strong> (hands-on penetration testing), <strong>CompTIA Security+</strong> (broad security knowledge), or <strong>PJPT</strong> (Practical Junior Penetration Tester).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

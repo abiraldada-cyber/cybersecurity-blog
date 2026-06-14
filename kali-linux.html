@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Start your cybersecurity learning journey here. Master 20 essential Kali Linux commands from basic file navigation to advanced security auditing.">
+    <title>Kali Linux Commands | Abiral's Cybersecurity Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span>ABIRAL</span>_SEC<div class="logo-cursor"></div>
+            </a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active"><a href="kali-linux.html">Kali Linux</a></li>
+                <li class="nav-item"><a href="index.html">About Me</a></li>
+                <li class="nav-item"><a href="networking.html">Networking</a></li>
+                <li class="nav-item"><a href="web-security.html">Web Security</a></li>
+                <li class="nav-item"><a href="owasp-top10.html">OWASP Top 10</a></li>
+                <li class="nav-item"><a href="cryptography.html">Cryptography</a></li>
+                <li class="nav-item"><a href="malware.html">Malware</a></li>
+                <li class="nav-item"><a href="linux.html">Linux</a></li>
+                <li class="nav-item"><a href="resources.html">Resources</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero-sec" style="padding: 4rem 0 2rem;">
+        <div class="container hero-content text-center">
+            <span class="hero-subtitle">LEARNING HUB // START HERE</span>
+            <h1 class="hero-title">Mastering <span>Kali Linux</span> CLI</h1>
+            <p class="hero-desc">The primary toolkit for security auditing, penetration testing, and digital forensics.</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="intro" style="background: rgba(13, 20, 35, 0.25);">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center; gap: 3rem;">
+                <div>
+                    <h2 class="section-title">Where the Journey Begins</h2>
+                    <p style="margin-bottom: 1rem; color: var(--text-main); font-size: 1.05rem; line-height: 1.7;">
+                        Hey there! Welcome to the start of my learning log. If you are new to cybersecurity, this is where we begin. Before we can analyze complex web attacks or dissect malware, we must learn how to navigate the command line.
+                    </p>
+                    <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                        Linux isn't just an operating system; it's a security professional's primary interface. Kali Linux comes pre-loaded with hundreds of open-source utilities for auditing networks, crack-testing passwords, and exploring software configurations. But to use those tools effectively, you must master the shell.
+                    </p>
+                    <p style="color: var(--text-muted); line-height: 1.7;">
+                        Let's start by learning these 20 fundamental commands. We will progress from basic file navigation to data parsing, and finally to advanced network auditing utilities.
+                    </p>
+                </div>
+                <div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-btn close"></div>
+                                <div class="terminal-btn minimize"></div>
+                                <div class="terminal-btn maximize"></div>
+                            </div>
+                            <div class="terminal-title">kali@mindrisers: ~</div>
+                        </div>
+                        <div class="terminal-body" style="font-size: 0.85rem;">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">kali@mindrisers:~$</span>
+                                <span class="terminal-input">uname -a</span>
+                            </div>
+                            <div class="terminal-output">
+                                Linux mindrisers-kali 6.6.9-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.6.9-1 (2026-06-14) x86_64 GNU/Linux
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">kali@mindrisers:~$</span>
+                                <span class="terminal-input">echo "Let's build a secure system."</span>
+                            </div>
+                            <div class="terminal-output">
+                                Let's build a secure system.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20 Commands Section -->
+    <section id="commands">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">20 Essential Linux / Kali Commands</h2>
+                <p class="section-subtitle">Structured from simple navigation to advanced security assessments</p>
+            </div>
+
+            <!-- Basic Commands -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 1rem; border-left: 3px solid var(--accent-cyan); padding-left: 0.75rem;">1. Basic Navigation & Operations (Level: Beginner)</h3>
+                <div class="cyber-table-wrapper">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Command</th>
+                                <th style="width: 45%;">Simple Explanation</th>
+                                <th style="width: 40%;">Cybersecurity Use-Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="accent-text-green"><code>pwd</code></td>
+                                <td>"Print Working Directory". Shows the exact path of the folder you are currently inside.</td>
+                                <td>Helps you confirm your path position before running automated scripts or dumping output files.</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>ls</code></td>
+                                <td>"List". Displays all the files and folders inside the directory you are looking at.</td>
+                                <td>Identify hidden script files (like <code>.bash_history</code>) using the <code>ls -la</code> flag.</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>cd</code></td>
+                                <td>"Change Directory". Moves you from one folder to another.</td>
+                                <td>Navigate to configuration folders (e.g. <code>cd /etc/nginx/</code>) to check configuration permissions.</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>cat</code></td>
+                                <td>"Concatenate". Reads the text inside a file and prints it directly on the terminal screen.</td>
+                                <td>Read local configuration files, hashes, or system text records (e.g. <code>cat /etc/resolv.conf</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>mkdir</code></td>
+                                <td>"Make Directory". Creates a brand-new empty folder.</td>
+                                <td>Organize your workspace when starting a security audit (e.g. <code>mkdir nmap_results</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>cp</code></td>
+                                <td>"Copy". Duplicates a file and places the copy in a location you choose.</td>
+                                <td>Create a backup copy of a configuration file before modifying it (e.g. <code>cp config.conf config.conf.bak</code>).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Intermediate Commands -->
+            <div style="margin-bottom: 3rem;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 1rem; border-left: 3px solid var(--accent-cyan); padding-left: 0.75rem;">2. System Controls & Manipulation (Level: Intermediate)</h3>
+                <div class="cyber-table-wrapper">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Command</th>
+                                <th style="width: 45%;">Simple Explanation</th>
+                                <th style="width: 40%;">Cybersecurity Use-Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="accent-text-green"><code>grep</code></td>
+                                <td>Searches through text files for specific words or patterns and highlights them.</td>
+                                <td>Parse system logs to find unauthorized activities (e.g. <code>grep "Failed password" /var/log/auth.log</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>chmod</code></td>
+                                <td>"Change Mode". Updates access permissions (read, write, execute) of a file or directory.</td>
+                                <td>Restrict private keys so only the owner can read them (e.g., <code>chmod 600 id_rsa</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>sudo</code></td>
+                                <td>"Superuser Do". Runs a command with administrator/root-level permissions.</td>
+                                <td>Install auditing packages or run raw socket packets (e.g. <code>sudo nmap -sS target</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>apt</code></td>
+                                <td>"Advanced Package Tool". The app manager for Debian systems, used to install, update, and remove software.</td>
+                                <td>Install security auditing packages directly on Kali Linux (e.g., <code>sudo apt install subfinder -y</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>systemctl</code></td>
+                                <td>Manages system services (like starting, stopping, or restarting background services).</td>
+                                <td>Start a local SSH server or web server to host exploitation payload files (e.g. <code>sudo systemctl start ssh</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>ps</code></td>
+                                <td>"Process Status". Lists running processes on the system.</td>
+                                <td>Review active processes on a compromised computer to detect unauthorized shells (e.g., <code>ps -aux</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>df</code></td>
+                                <td>"Disk Free". Reports how much disk space is available on the system.</td>
+                                <td>Ensure you have enough space before downloading large forensic images or traffic captures.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Advanced / Security-Focused -->
+            <div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-cyan); margin-bottom: 1rem; border-left: 3px solid var(--accent-cyan); padding-left: 0.75rem;">3. Network Auditing & Utilities (Level: Advanced)</h3>
+                <div class="cyber-table-wrapper">
+                    <table class="cyber-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Command</th>
+                                <th style="width: 45%;">Simple Explanation</th>
+                                <th style="width: 40%;">Cybersecurity Use-Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="accent-text-green"><code>ping</code></td>
+                                <td>Sends packets to an IP address to check if a remote host is active and responsive.</td>
+                                <td>Perform basic network connectivity checks (e.g. <code>ping -c 4 192.168.1.1</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>curl</code></td>
+                                <td>Transfers data to or from a server. Used to interact with APIs and download files from the web.</td>
+                                <td>Inspect HTTP headers to check server software versions (e.g. <code>curl -I http://target.com</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>ss</code></td>
+                                <td>"Socket Statistics". Lists active network connections and ports open on your system.</td>
+                                <td>Audit your system's open ports and locate running services (e.g., <code>ss -tulpn</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>nmap</code></td>
+                                <td>"Network Mapper". Scans remote servers to discover open ports, services, and operating system details.</td>
+                                <td>Find vulnerable entry points during security assessments (e.g. <code>nmap -sV -T4 10.10.10.5</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>netcat / nc</code></td>
+                                <td>Known as the "TCP/IP Swiss Army knife". Used to read and write data across network connections.</td>
+                                <td>Test raw socket connections or listen for incoming test connections (e.g., <code>nc -lvnp 4444</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>tcpdump</code></td>
+                                <td>A command-line packet sniffer. It captures and displays network traffic passing through your interface.</td>
+                                <td>Monitor network traffic to analyze unencrypted login attempts (e.g. <code>sudo tcpdump -i eth0 port 80</code>).</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-text-green"><code>find</code></td>
+                                <td>Searches the directory tree for files matching specific criteria (like name, size, or permissions).</td>
+                                <td>Locate misconfigured SUID binaries that could allow privilege escalation (e.g. <code>find / -perm -4000 -type f 2>/dev/null</code>).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ABIRAL_<span>SEC</span></div>
+            <p class="footer-text">
+                &copy; 2026 Abiral Timalsina. Cybersecurity Student, Mindrisers Institute, Kathmandu, Nepal. All Rights Reserved.
+            </p>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM STATUS: SECURE</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
