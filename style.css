@@ -1,39 +1,39 @@
 /* 
    Abiral Timalsina's Cybersecurity Blog & Portfolio Shared Stylesheet
-   Theme: Cyber Dark / Hacker / Neon
+   Theme: Cyber Dark / Hacker / Neon — White Background Edition
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
 
 :root {
-    --bg-darker: #050811;
-    --bg-dark: #0a0f1d;
-    --bg-card: rgba(13, 20, 35, 0.6);
-    --bg-terminal: #070a13;
+    --bg-darker: #ffffff;
+    --bg-dark: #f8fafc;
+    --bg-card: rgba(240, 245, 255, 0.8);
+    --bg-terminal: #1e2a3a;
     
-    --accent-cyan: #00f0ff;
-    --accent-green: #00ff66;
+    --accent-cyan: #00b8d9;
+    --accent-green: #00a651;
     --accent-blue: #0066ff;
     --accent-red: #ff3b30;
     --accent-warning: #ffb300;
     
-    --text-main: #e2e8f0;
-    --text-muted: #94a3b8;
-    --text-dim: #64748b;
-    --text-cyan: #7ff0ff;
-    --text-green: #a3ffd6;
+    --text-main: #1e293b;
+    --text-muted: #475569;
+    --text-dim: #94a3b8;
+    --text-cyan: #0077a8;
+    --text-green: #005c2e;
     
-    --border-glow: rgba(0, 240, 255, 0.15);
-    --border-green: rgba(0, 255, 102, 0.2);
+    --border-glow: rgba(0, 184, 217, 0.25);
+    --border-green: rgba(0, 166, 81, 0.25);
     --border-red: rgba(255, 59, 48, 0.3);
     
     --font-heading: 'Share Tech Mono', monospace;
     --font-body: 'Inter', sans-serif;
     --font-code: 'Fira Code', monospace;
     
-    --shadow-cyan: 0 0 10px rgba(0, 240, 255, 0.3);
-    --shadow-green: 0 0 10px rgba(0, 255, 102, 0.3);
-    --shadow-cyan-strong: 0 0 20px rgba(0, 240, 255, 0.6);
+    --shadow-cyan: 0 0 10px rgba(0, 184, 217, 0.2);
+    --shadow-green: 0 0 10px rgba(0, 166, 81, 0.2);
+    --shadow-cyan-strong: 0 0 20px rgba(0, 184, 217, 0.4);
     
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
@@ -55,10 +55,10 @@ html {
 }
 
 body {
+    background-color: #ffffff;
     background-image: 
-        radial-gradient(at 0% 0%, rgba(0, 102, 255, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(0, 255, 102, 0.03) 0px, transparent 50%),
-        linear-gradient(to bottom, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        radial-gradient(at 0% 0%, rgba(0, 184, 217, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(0, 166, 81, 0.03) 0px, transparent 50%);
     background-attachment: fixed;
     min-height: 100vh;
     display: flex;
@@ -71,10 +71,10 @@ body {
     height: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--bg-darker);
+    background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #cbd5e1;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -86,7 +86,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     letter-spacing: 1px;
-    color: #ffffff;
+    color: #0f172a;
     font-weight: 500;
 }
 
@@ -103,12 +103,12 @@ a:hover {
 
 code {
     font-family: var(--font-code);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 184, 217, 0.08);
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9em;
-    color: #ff79c6;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #0077a8;
+    border: 1px solid rgba(0, 184, 217, 0.2);
 }
 
 pre {
@@ -170,14 +170,14 @@ pre code {
 
 /* Header & Navigation */
 header {
-    background: rgba(5, 8, 17, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-glow);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
 }
 
 .nav-container {
@@ -194,6 +194,7 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #0f172a;
 }
 
 .logo span {
@@ -230,7 +231,7 @@ header {
 .nav-item.active a {
     color: var(--accent-cyan);
     text-shadow: var(--shadow-cyan);
-    background: rgba(0, 240, 255, 0.05);
+    background: rgba(0, 184, 217, 0.07);
 }
 
 .nav-item.active a::after {
@@ -269,6 +270,8 @@ header {
     padding: 5rem 0 3rem;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 50%, #f0fdf4 100%);
+    border-bottom: 1px solid var(--border-glow);
 }
 
 .hero-content {
@@ -292,7 +295,7 @@ header {
     font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    text-shadow: var(--shadow-cyan);
+    color: #0f172a;
 }
 
 .hero-title span {
@@ -322,27 +325,27 @@ header {
 }
 
 .btn-primary {
-    background: rgba(0, 240, 255, 0.1);
+    background: rgba(0, 184, 217, 0.08);
     color: var(--accent-cyan);
     border: 1px solid var(--accent-cyan);
-    box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.1);
+    box-shadow: inset 0 0 10px rgba(0, 184, 217, 0.05);
 }
 
 .btn-primary:hover {
     background: var(--accent-cyan);
-    color: var(--bg-darker);
+    color: #ffffff;
     box-shadow: var(--shadow-cyan-strong);
 }
 
 .btn-secondary {
-    background: rgba(0, 255, 102, 0.05);
+    background: rgba(0, 166, 81, 0.06);
     color: var(--accent-green);
     border: 1px solid var(--accent-green);
 }
 
 .btn-secondary:hover {
     background: var(--accent-green);
-    color: var(--bg-darker);
+    color: #ffffff;
     box-shadow: var(--shadow-green);
 }
 
@@ -354,21 +357,20 @@ header {
 
 /* Card components */
 .card {
-    background: var(--bg-card);
+    background: #ffffff;
     border: 1px solid var(--border-glow);
     border-radius: 6px;
     padding: 2rem;
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-green);
-    box-shadow: 0 10px 20px rgba(0, 255, 102, 0.05), var(--shadow-green);
+    box-shadow: 0 10px 20px rgba(0, 166, 81, 0.08), var(--shadow-green);
 }
 
 .card-icon {
@@ -381,7 +383,7 @@ header {
 .card-title {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #ffffff;
+    color: #0f172a;
 }
 
 .card-desc {
@@ -390,23 +392,23 @@ header {
     margin-bottom: 1.5rem;
 }
 
-/* Cyber Terminal Component */
+/* Cyber Terminal Component — kept dark for authenticity */
 .terminal {
-    background: var(--bg-terminal);
-    border: 1px solid #1e293b;
+    background: #0d1117;
+    border: 1px solid #30363d;
     border-radius: 8px;
     font-family: var(--font-code);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     width: 100%;
 }
 
 .terminal-header {
-    background: #0f172a;
+    background: #161b22;
     padding: 0.75rem 1rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid #30363d;
     position: relative;
 }
 
@@ -431,14 +433,14 @@ header {
     left: 0;
     text-align: center;
     font-size: 0.85rem;
-    color: var(--text-dim);
+    color: #8b949e;
     font-family: var(--font-heading);
 }
 
 .terminal-body {
     padding: 1.5rem;
     font-size: 0.9rem;
-    color: #f1f5f9;
+    color: #e6edf3;
 }
 
 .terminal-line {
@@ -449,16 +451,16 @@ header {
 }
 
 .terminal-prompt {
-    color: var(--accent-green);
+    color: #3fb950;
     margin-right: 0.75rem;
 }
 
 .terminal-input {
-    color: var(--accent-cyan);
+    color: #79c0ff;
 }
 
 .terminal-output {
-    color: var(--text-muted);
+    color: #8b949e;
     padding-left: 1rem;
     width: 100%;
     margin-bottom: 0.75rem;
@@ -467,7 +469,7 @@ header {
 /* Sections on Inner Pages */
 section {
     padding: 4rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 section:last-of-type {
@@ -484,6 +486,7 @@ section:last-of-type {
     display: inline-block;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+    color: #0f172a;
 }
 
 .section-title::after {
@@ -505,7 +508,7 @@ section:last-of-type {
 
 /* Informational / Warning banner styles */
 .disclaimer-banner {
-    background: rgba(239, 68, 68, 0.05);
+    background: rgba(255, 59, 48, 0.04);
     border: 1px solid var(--border-red);
     border-left: 4px solid var(--accent-red);
     padding: 1.25rem;
@@ -523,7 +526,7 @@ section:last-of-type {
 }
 
 .disclaimer-content h4 {
-    color: #ffffff;
+    color: #0f172a;
     font-size: 1.1rem;
     margin-bottom: 0.25rem;
 }
@@ -539,7 +542,7 @@ section:last-of-type {
     margin: 2rem 0;
     border: 1px solid var(--border-glow);
     border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .cyber-table {
@@ -547,11 +550,11 @@ section:last-of-type {
     border-collapse: collapse;
     text-align: left;
     font-size: 0.95rem;
-    background: var(--bg-card);
+    background: #ffffff;
 }
 
 .cyber-table th {
-    background: rgba(0, 240, 255, 0.06);
+    background: rgba(0, 184, 217, 0.07);
     color: var(--accent-cyan);
     font-family: var(--font-heading);
     font-size: 1.1rem;
@@ -562,12 +565,12 @@ section:last-of-type {
 
 .cyber-table td {
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     color: var(--text-main);
 }
 
 .cyber-table tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 184, 217, 0.03);
 }
 
 .cyber-table tr:last-child td {
@@ -605,7 +608,7 @@ section:last-of-type {
     width: 14px;
     height: 14px;
     right: -7px;
-    background-color: var(--bg-darker);
+    background-color: #ffffff;
     border: 3px solid var(--accent-cyan);
     top: 15px;
     border-radius: 50%;
@@ -627,10 +630,11 @@ section:last-of-type {
 
 .timeline-content {
     padding: 1.5rem;
-    background: var(--bg-card);
+    background: #ffffff;
     position: relative;
     border-radius: 6px;
     border: 1px solid var(--border-glow);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .timeline-content h3 {
@@ -652,7 +656,7 @@ section:last-of-type {
 }
 
 .contact-info-card {
-    background: rgba(13, 20, 35, 0.4);
+    background: #f8fafc;
     border: 1px solid var(--border-glow);
     border-radius: 6px;
     padding: 1.5rem;
@@ -671,11 +675,11 @@ section:last-of-type {
 }
 
 .contact-form {
-    background: var(--bg-card);
+    background: #ffffff;
     border: 1px solid var(--border-glow);
     border-radius: 8px;
     padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .form-group {
@@ -692,11 +696,11 @@ section:last-of-type {
 
 .form-control {
     width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 4px;
     padding: 0.75rem 1rem;
-    color: #ffffff;
+    color: #0f172a;
     font-family: var(--font-body);
     font-size: 0.95rem;
     transition: var(--transition-normal);
@@ -706,7 +710,7 @@ section:last-of-type {
     outline: none;
     border-color: var(--accent-cyan);
     box-shadow: var(--shadow-cyan);
-    background: rgba(0, 240, 255, 0.02);
+    background: #ffffff;
 }
 
 textarea.form-control {
@@ -724,7 +728,7 @@ textarea.form-control {
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    background: rgba(0, 240, 255, 0.05);
+    background: rgba(0, 184, 217, 0.06);
     border: 1px solid var(--border-glow);
     display: flex;
     justify-content: center;
@@ -737,15 +741,15 @@ textarea.form-control {
 
 .social-icon:hover {
     background: var(--accent-cyan);
-    color: var(--bg-darker);
+    color: #ffffff;
     box-shadow: var(--shadow-cyan);
     transform: translateY(-3px);
 }
 
 /* Footer Section */
 footer {
-    background: var(--bg-darker);
-    border-top: 1px solid #1e293b;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
     padding: 3rem 0;
     margin-top: auto;
     text-align: center;
@@ -755,7 +759,7 @@ footer {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: #0f172a;
 }
 
 .footer-logo span {
@@ -772,7 +776,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(0, 255, 102, 0.05);
+    background: rgba(0, 166, 81, 0.06);
     border: 1px solid var(--border-green);
     padding: 0.4rem 1rem;
     border-radius: 20px;
@@ -797,9 +801,9 @@ footer {
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 102, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 166, 81, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 166, 81, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 166, 81, 0); }
 }
 
 /* Sidebar and Mobile navigation support */
@@ -821,11 +825,11 @@ footer {
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--bg-darker);
+        background: #ffffff;
         border-bottom: 1px solid var(--border-glow);
         padding: 1.5rem;
         gap: 1rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     }
     
     header:hover .nav-menu,
